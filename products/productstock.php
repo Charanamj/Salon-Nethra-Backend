@@ -15,6 +15,7 @@
                                 <th> Product Price </th>                              
                                 <th> Add Date </th>
                                 <th> Expire Date </th>
+                                <th> Added by </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,44 +32,61 @@
                                     <tr>
                                         <?php
                                         $db = dbConn();
-                                        $productcategoryname = $row['product_category_id'];
-                                        $sql3 = "SELECT * FROM  tbl_products_category WHERE product_category_id='$productcategoryname'";
-                                        $result3 = $db->query($sql3);
-                                        $row3 = $result3->fetch_assoc()
+                                        $productname = $row['product_id'];
+                                        $sql1 = "SELECT * FROM  tbl_products WHERE product_id='$productname'";
+                                        $result1 = $db->query($sql1);
+                                        $row1 = $result1->fetch_assoc()
                                         ?>
-                                        <td><?= $row3['product_category_name'] ?> </td>
+                                        <td><?= $row1['product_name'] ?> </td>
+                                        <?php
+                                        $db = dbConn();
+                                        $productcategoryname = $row['product_category_id'];
+                                        $sql2 = "SELECT * FROM  tbl_products_category WHERE product_category_id='$productcategoryname'";
+                                        $result2 = $db->query($sql2);
+                                        $row2 = $result2->fetch_assoc()
+                                        ?>
+                                        <td><?= $row2['product_category_name'] ?> </td>
                                         <?php
                                         $db = dbConn();
                                         $batchname = $row['batch_id'];
-                                        $sql4 = "SELECT * FROM  tbl_batches WHERE batch_id='$batchname'";
+                                        $sql3 = "SELECT * FROM  tbl_batches WHERE batch_id='$batchname'";
+                                        $result3 = $db->query($sql3);
+                                        $row3 = $result3->fetch_assoc()
+                                        ?>
+                                        <td><?= $row3['batch_name'] ?> </td>
+                                        <td><?= $row['product_serialnumber'] ?> </td>
+                                        <?php
+                                        $db = dbConn();
+                                        $productprice = $row['product_id'];
+                                        $sql4 = "SELECT * FROM  tbl_products WHERE product_id='$productprice'";
                                         $result4 = $db->query($sql4);
                                         $row4 = $result4->fetch_assoc()
                                         ?>
-                                        <td><?= $row4['batch_name'] ?> </td>
+                                        <td><?= $row4['product_price'] ?> </td>
                                         <?php
                                         $db = dbConn();
-                                        $serialnumber = $row['batch_id'];
-                                        $sql5 = "SELECT * FROM  tbl_products_serial_number WHERE batch_id='$batchname'";
+                                        $productadddate = $row['product_id'];
+                                        $sql5 = "SELECT * FROM  tbl_products WHERE product_id='$productadddate'";
                                         $result5 = $db->query($sql5);
                                         $row5 = $result5->fetch_assoc()
                                         ?>
-                                        <td><?= $row5['product_name'] ?> </td>
-                                        <td><?= $row['product_name'] ?> </td>
-                                        <td><?= $row['product_description'] ?> </td>
-                                        <td class="py-1">
-                                            <img src="../assets/images/products/<?= $row['product_image'] ?>" alt="image" />
-                                        </td>
-                                        <td><?= $row['product_price'] ?> </td>
+                                        <td><?= $row4['productadd_date'] ?> </td>
+                                        <?php
+                                        $db = dbConn();
+                                        $productexpiredate = $row['product_id'];
+                                        $sql6 = "SELECT * FROM  tbl_products WHERE product_id='$productexpiredate'";
+                                        $result6 = $db->query($sql6);
+                                        $row6 = $result6->fetch_assoc()
+                                        ?>
+                                        <td><?= $row6['productexpire_date'] ?> </td>
                                         <?php
                                         $db = dbConn();
                                         $productadduser = $_SESSION['LogId'];
-                                        $sql2 = "SELECT * FROM  tbl_staff WHERE staff_id='$productadduser'";
-                                        $result2 = $db->query($sql2);
-                                        $row2 = $result2->fetch_assoc()
-                                            ?>
-                                        <td><?= $row2['staff_firstname'] . ' ' . $row2['staff_lastname'] ?> </td>
-                                        <td><?= $row['productadd_date'] ?> </td>
-                                        <td><?= $row['productexpire_date'] ?> </td>
+                                        $sql7 = "SELECT * FROM  tbl_staff WHERE staff_id='$productadduser'";
+                                        $result7 = $db->query($sql7);
+                                        $row7 = $result7->fetch_assoc()
+                                        ?>
+                                        <td><?= $row7['staff_firstname'] . ' ' . $row7['staff_lastname'] ?> </td>
                                     </tr>
                                     <?php
 
