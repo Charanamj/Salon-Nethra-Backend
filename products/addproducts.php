@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
     $product_category = dataClean($product_category);
     $batch_name = dataClean($batch_name);
-    $product_name = dataClean($product_name);
     $product_serialnumber = dataClean($product_serialnumber);
     $product_description = dataClean($product_description);
     $product_price = dataClean($product_price);
@@ -21,9 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (empty($batch_name)) {
         $messages['batch_name'] = "The product bacth id should be select..!";
-    }
-    if (empty($product_name)) {
-        $messages['product_name'] = "The product name should not be empty..!";
     }
     if (empty($product_serialnumber)) {
         $messages['product_serialnumber'] = "The product serial number should not be empty..!";
@@ -45,15 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (empty($productexpire_date)) {
         $messages['productexpire_date'] = "The product expire date should be select..!";
-    }
-    if (!empty($product_name)) {
-        $db = dbConn();
-        $lower = strtolower($product_name);
-        $sql = "SELECT * FROM  tbl_products WHERE product_name='$product_name'";
-        $result = $db->query($sql);
-        if ($result->num_rows > 0) {
-            $messages['product_name'] = "This product name is already in the database";
-        }
     }
     if (!empty($product_serialnumber)) {
         $db = dbConn();
@@ -106,8 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $lower = strtolower($product_name);
         $AddDate = date('y-m-d');
         $status = 1;
-        $sql = "INSERT INTO tbl_products (batch_id,product_category_id,product_name,product_description,
-        product_price, productadd_user, product_image, productadd_date, productexpire_date) VALUES ('$batch_name','$product_category','$lower','$product_description',
+        $sql = "INSERT INTO tbl_products (batch_id,product_category_id,product_name_id,product_description,
+        product_price, productadd_user, product_image, productadd_date, productexpire_date) VALUES ('$batch_name','$product_category','$product_name','$product_description',
         '$product_price','$AddUser','$file_name_new','$AddDate','$productexpire_date')";
 
         $db->query($sql);
@@ -242,16 +229,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <span class="text-danger"><?= @$messages['batch_name'] ?></span>
                 </div>
                 <div class="form-group">
+                    <?php
+                    $db = dbConn();
+                    $sql4 = "SELECT * FROM  tbl_product_names";
+                    $result4 = $db->query($sql4);
+                    ?>
+                    <label for="exampleInputName1">Select Product Name</label>
+                    <select type="text" class="form-control" id="exampleInputName1" name="product_name">
+                        <option value="">--</option>
+                        <?php
+                        while ($row = $result4->fetch_assoc()) {
+                            ?>
+                            <option value="<?= $row['product_name_id'] ?>"
+                                <?= @$tbl_product_names == $row['product_name_id'] ? 'selected' : '' ?>>
+                                <?= $row['product_name'] ?>
+                            </option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                    <span class="text-danger"><?= @$messages['product_name'] ?></span>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputName1">Product Serial Number</label>
                     <input type="text" class="form-control" id="exampleInputName1" name="product_serialnumber"
                         value="<?= @$product_serialnumber ?>" placeholder="Enter the product serial number">
                     <span class="text-danger"><?= @$messages['product_serialnumber'] ?></span>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName1">Product Name</label>
-                    <input type="text" class="form-control" id="exampleInputName1" name="product_name"
-                        value="<?= @$product_name ?>" placeholder="Enter the product name">
-                    <span class="text-danger"><?= @$messages['product_name'] ?></span>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Product Description</label>

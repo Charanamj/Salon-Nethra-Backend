@@ -333,6 +333,9 @@ if (($_SESSION ['userrole']) == 'Manager') {
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addproductcategory.php">Add Salon Products Categoty</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addproductname.php">Add Salon Products Names</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addproducts.php">Add Salon Products</a>
                 </li>
                 <li class="nav-item">

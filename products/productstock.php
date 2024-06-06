@@ -31,13 +31,19 @@
                                     ?>
                                     <tr>
                                         <?php
-                                        $db = dbConn();
-                                        $productname = $row['product_id'];
-                                        $sql1 = "SELECT * FROM  tbl_products WHERE product_id='$productname'";
-                                        $result1 = $db->query($sql1);
-                                        $row1 = $result1->fetch_assoc()
+                                        $db = dbConn(); 
+                                         $productid= $row['product_id'];  '<br>';
+                                         $sql10 = "SELECT * FROM  tbl_products WHERE product_id='$productid'";
+                                         '<br>';
+                                        $result10 = $db->query($sql10);
+                                        $row10 = $result10->fetch_assoc();
+                                         $pnameid = $row10["product_name_id"];  '<br>';
+                                         $sql8 ="SELECT * FROM  tbl_product_names WHERE product_name_id='$pnameid'";
+                                         '<br>';
+                                        $result8 = $db->query($sql8);
+                                        $row8 = $result8->fetch_assoc();
                                         ?>
-                                        <td><?= $row1['product_name'] ?> </td>
+                                        <td><?= $row8['product_name'] ?> </td>
                                         <?php
                                         $db = dbConn();
                                         $productcategoryname = $row['product_category_id'];
