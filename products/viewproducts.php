@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Salon Products Details Table</h4>
+                    <h4 class="card-title">Salon Products Stock Details Table</h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -52,14 +52,7 @@
                                             <img src="../assets/images/products/<?= $row['product_image'] ?>" alt="image" />
                                         </td>
                                         <td><?= $row['product_price'] ?> </td>
-                                        <?php
-                                        $db = dbConn();
-                                        $productquantity = $row['product_id'];
-                                        $sql3 = "SELECT COUNT(*) AS stock_count FROM tbl_products_serial_number WHERE product_id = '$productquantity'";
-                                        $result3 = $db->query($sql3);
-                                        $row3 = $result3->fetch_assoc()
-                                        ?>
-                                        <td><?= $row3['stock_count'] ?> </td>
+                                        <td><?= $row['product_quantity'] ?> </td>
                                         <?php
                                         $db = dbConn();
                                         $productadduser = $_SESSION['LogId'];

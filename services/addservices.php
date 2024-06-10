@@ -65,9 +65,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $AddUser = $_SESSION['LogId'];
         $AddDate = date('y-m-d');
         $status = 1;
-        $sql = "INSERT INTO `tbl_services`(service_category_id,service_name,service_status,serviceadd_date,serviceadd_user,service_description,service_price,service_image) VALUES ('$service_category','$service_name','$status','$AddDate','$AddUser','$service_description','$service_price','$file_name_new')";
+        $sql = "SELECT * FROM tbl_prices";
+        $result = $db->query($sql);
+        $row = $result->fetch_assoc();
+        $stafffee = ($service_price * $row['staff_pay']) / 100;
+        $utilityfee= ($service_price * $row['utility_pay']) / 100;
+        $profit = ($service_price * $row['profit_pay']) / 100;
+        $sql1 = "INSERT INTO `tbl_services`(service_category_id,service_name,service_status,serviceadd_date,
+        serviceadd_user,service_description,service_price,service_image,service_staff_fee,staff_utility_fee,
+        staff_profit_fee) VALUES ('$service_category','$service_name','$status','$AddDate','$AddUser',
+        '$service_description','$service_price','$file_name_new','$stafffee','$utilityfee','$profit')";
 
-        $db->query($sql);
+        $db->query($sql1);
         echo "<script>
         Swal.fire({
             title: 'Added!',

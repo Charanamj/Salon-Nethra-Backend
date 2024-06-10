@@ -189,8 +189,65 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 ?>
+<style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-<div class="col-12 grid-margin stretch-card">
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .card-description {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #666;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-gradient-primary {
+        background: linear-gradient(45deg, #2196F3, #04befe);
+        color: white;
+        border: none;
+    }
+
+    .btn-light {
+        background-color: #f1f1f1;
+        color: #333;
+        border: 1px solid #ccc;
+    }
+</style>
+<div class="col-1 grid-margin stretch-card"></div>
+<div class="col-8 grid-margin stretch-card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Salon Staff</h4>
@@ -350,4 +407,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
   </div>
 </div>
+<div class="col-1 grid-margin stretch-card"></div>
 <?php include '../footer.php'; ?>

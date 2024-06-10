@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Salon Products Stock Details Table</h4>
+                    <h4 class="card-title">Salon Products Serial Details Table</h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>

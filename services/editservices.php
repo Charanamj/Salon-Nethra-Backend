@@ -13,8 +13,9 @@
                                 <th> Service Name </th>
                                 <th> Service Description </th>
                                 <th> Service Price </th>
-                                <th> Service Image </th>
-                                <th> Status </th>
+                                <th> Staff Pay </th>
+                                <th> Utility Pay </th>
+                                <th> Profit Pay </th>
                                 <th> Change Status </th>
                                 <th> Delete </th>
                             </tr>
@@ -35,6 +36,9 @@
                                         <td><?= $row['service_name'] ?> </td>
                                         <td><?= $row['service_description'] ?> </td>
                                         <td><?= $row['service_price'] ?> </td>
+                                        <td><?= $row['service_staff_fee'] ?> </td>
+                                        <td><?= $row['staff_utility_fee'] ?> </td>
+                                        <td><?= $row['staff_profit_fee'] ?> </td>
                                         <td class="py-1">
                                             <img src="../assets/images/services/<?= $row['service_image'] ?>" alt="image" />
                                         </td>

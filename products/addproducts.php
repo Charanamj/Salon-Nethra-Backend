@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
     $product_category = dataClean($product_category);
     $batch_name = dataClean($batch_name);
+    $product_name = dataClean($product_name);
     $product_serialnumber = dataClean($product_serialnumber);
     $product_description = dataClean($product_description);
     $product_price = dataClean($product_price);
@@ -20,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (empty($batch_name)) {
         $messages['batch_name'] = "The product bacth id should be select..!";
+    }
+    if (empty($product_name)) {
+        $messages['product_name'] = "The name should be select..!";
     }
     if (empty($product_serialnumber)) {
         $messages['product_serialnumber'] = "The product serial number should not be empty..!";
@@ -93,18 +97,40 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $lower = strtolower($product_name);
         $AddDate = date('y-m-d');
         $status = 1;
-        $sql = "INSERT INTO tbl_products (batch_id,product_category_id,product_name_id,product_description,
-        product_price, productadd_user, product_image, productadd_date, productexpire_date) VALUES ('$batch_name','$product_category','$product_name','$product_description',
-        '$product_price','$AddUser','$file_name_new','$AddDate','$productexpire_date')";
+        //create a new variable name for product quantity and assigned it 1.
+        $productquantity = 1;
+        //select product name id from the product table.
+        $sql = "SELECT * FROM  tbl_products WHERE product_name_id='$product_name'";
+        $result = $db->query($sql);
+        //if there are records with related to product name, the quantity will update according to that
+        //(UPDATE the tbl_products & INSERT serial number for tbl_products_serial_number)
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $sqlcheck = "UPDATE tbl_products SET product_quantity= product_quantity + 1 WHERE product_name_id='$product_name'";
+            $db->query($sqlcheck);
+            $productid = $row ['product_id'];
+            $sql1 = "INSERT INTO tbl_products_serial_number (product_id,product_category_id,batch_id,
+            product_serialnumber) VALUES ('$productid','$product_category','$batch_name','$product_serialnumber')";
 
-        $db->query($sql);
+            $db->query($sql1);
+            //if there are no records with related to product name, the new product name & the quantity will update according to that
+            //(INSERT into the tbl_products & INSERT the serial number for tbl_products_serial_number)
+        } else {
+            $sql = "INSERT INTO tbl_products (batch_id,product_category_id,product_name_id,product_description,
+            product_price, product_quantity, productadd_user, product_image, productadd_date, productexpire_date) VALUES ('$batch_name','$product_category','$product_name','$product_description',
+            '$product_price','$productquantity','$AddUser','$file_name_new','$AddDate','$productexpire_date')";
 
-        $product_id = $db->insert_id;
-        $sql1 = "INSERT INTO tbl_products_serial_number (product_id,product_category_id,batch_id,
-        product_serialnumber) VALUES ('$product_id','$product_category','$batch_name','$product_serialnumber')";
+            $db->query($sql);
+            $product_id = $db->insert_id;
+            $sql1 = "INSERT INTO tbl_products_serial_number (product_id,product_category_id,batch_id,
+            product_serialnumber) VALUES ('$product_id','$product_category','$batch_name','$product_serialnumber')";
 
-        $db->query($sql1);
-        echo "<script>
+            $db->query($sql1);
+        }
+
+    }
+
+    echo "<script>
         Swal.fire({
             title: 'Added!',
             text: 'Added Successfully !.',
@@ -114,8 +140,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             window.location.href = 'http://localhost/SMS/system/products/addproducts.php'; // Redirect to success page
         });
 </script>";
-    }
 }
+
 
 ?>
 <style>
@@ -240,8 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <?php
                         while ($row = $result4->fetch_assoc()) {
                             ?>
-                            <option value="<?= $row['product_name_id'] ?>"
-                                <?= @$tbl_product_names == $row['product_name_id'] ? 'selected' : '' ?>>
+                            <option value="<?= $row['product_name_id'] ?>" <?= @$tbl_product_names == $row['product_name_id'] ? 'selected' : '' ?>>
                                 <?= $row['product_name'] ?>
                             </option>
                             <?php

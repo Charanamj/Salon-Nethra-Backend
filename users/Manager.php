@@ -339,26 +339,26 @@ if (($_SESSION ['userrole']) == 'Manager') {
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addproducts.php">Add Salon Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addbatches.php">Add Batches</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>products/addbatches.php">Add Batches for products</a>
                 </li>               
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>products/viewproducts.php">View Salon Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>products/productstock.php">Manage Product Stock</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>products/productstock.php">View Product Serial</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Salon Payments</span>
               <i class="mdi mdi-table-large menu-icon"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/tables/basic-table.html">Basic table</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/addprices.php">Add Prices</a>
                 </li>
               </ul>
             </div>
