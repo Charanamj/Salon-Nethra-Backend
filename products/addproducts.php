@@ -113,6 +113,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             product_serialnumber) VALUES ('$productid','$product_category','$batch_name','$product_serialnumber')";
 
             $db->query($sql1);
+            echo "<script>
+            Swal.fire({
+                title: 'Added!',
+                text: 'Added Successfully !.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'http://localhost/SMS/system/products/addproducts.php'; // Redirect to success page
+            });
+    </script>";
             //if there are no records with related to product name, the new product name & the quantity will update according to that
             //(INSERT into the tbl_products & INSERT the serial number for tbl_products_serial_number)
         } else {
@@ -126,20 +136,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             product_serialnumber) VALUES ('$product_id','$product_category','$batch_name','$product_serialnumber')";
 
             $db->query($sql1);
+
+            echo "<script>
+            Swal.fire({
+                title: 'Added!',
+                text: 'Added Successfully !.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'http://localhost/SMS/system/products/addproducts.php'; // Redirect to success page
+            });
+    </script>";
         }
 
     }
 
-    echo "<script>
-        Swal.fire({
-            title: 'Added!',
-            text: 'Added Successfully !.',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        }).then(() => {
-            window.location.href = 'http://localhost/SMS/system/products/addproducts.php'; // Redirect to success page
-        });
-</script>";
+
 }
 
 
