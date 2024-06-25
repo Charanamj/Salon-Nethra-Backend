@@ -118,6 +118,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
+            <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Batch ID </th>
+                                <th> Batch Name </th>
+                                <th> Batch Add Date </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $db = dbConn();
+                            $sql = "SELECT * FROM tbl_batches";
+                            $result = $db->query($sql);
+                            ?>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                $i = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['batch_id'] ?> </td>
+                                        <td><?= $row['batch_name'] ?> </td>
+                                        <td><?= $row['batch_name'] ?> </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            </tbody>
+                            </table>
         </div>
     </div>
 </div>

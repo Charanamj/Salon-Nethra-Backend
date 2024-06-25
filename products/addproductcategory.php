@@ -50,6 +50,34 @@ if (empty($messages)) {
         <button type="submit" name="action" value="addproductcategory" class="btn btn-gradient-primary me-2">Submit</button>
         <!-- <button class="btn btn-light">Cancel</button> -->
     </form>
+    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Product Category ID </th>
+                                <th> Product Category Name </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $db = dbConn();
+                            $sql = "SELECT * FROM tbl_products_category";
+                            $result = $db->query($sql);
+                            ?>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                $i = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['product_category_id'] ?> </td>
+                                        <td><?= $row['product_category_name'] ?> </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            </tbody>
+                            </table>
 </div>
 </div>
 </div>

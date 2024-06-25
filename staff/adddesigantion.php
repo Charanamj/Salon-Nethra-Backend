@@ -39,6 +39,34 @@ if (empty($messages)) {
         <button type="submit" name="action" value="adddesignation" class="btn btn-gradient-primary me-2">Submit</button>
         <!-- <button class="btn btn-light">Cancel</button> -->
     </form>
+    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Designation ID </th>
+                                <th> Designation Name </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $db = dbConn();
+                            $sql = "SELECT * FROM designation";
+                            $result = $db->query($sql);
+                            ?>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                $i = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['designation_id'] ?> </td>
+                                        <td><?= $row['designation_name'] ?> </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            </tbody>
+                            </table>
 </div>
 </div>
 </div>

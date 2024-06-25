@@ -296,19 +296,25 @@ if (($_SESSION ['userrole']) == 'Manager') {
               </ul>
             </div>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <span class="menu-title">Icons</span>
-              <i class="mdi mdi-contacts menu-icon"></i>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#icons1" aria-expanded="false" aria-controls="icons1">
+              <span class="menu-title">Appointment Management</span>
+              <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="icons">
+            <div class="collapse" id="icons1">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/icons/font-awesome.html">Font Awesome</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/cancelledappointments.php">Cancelled Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/completeappointments.php">Completed Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/processingappointments.php">Processing Appointments</a>
                 </li>
               </ul>
             </div>
-          </li> -->
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
               <span class="menu-title">Forms</span>
@@ -325,7 +331,7 @@ if (($_SESSION ['userrole']) == 'Manager') {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <span class="menu-title">Salon Products</span>
-              <i class="mdi mdi-chart-bar menu-icon"></i>
+              <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
@@ -353,7 +359,7 @@ if (($_SESSION ['userrole']) == 'Manager') {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <span class="menu-title">Salon Payments</span>
-              <i class="mdi mdi-table-large menu-icon"></i>
+              <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
@@ -365,14 +371,13 @@ if (($_SESSION ['userrole']) == 'Manager') {
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">Creating TIme Slots</span>
               <i class="menu-arrow"></i>
-              <i class="mdi mdi-lock menu-icon"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/blank-page.html"> Blank Page </a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>timeslots/timeslot.php"> Adding Time Slot </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/login.html"> Login </a>

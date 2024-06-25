@@ -144,6 +144,43 @@ if (empty($messages)) {
                 <button type="submit" name="action" class="btn btn-gradient-primary me-2" value="addproductname">Submit</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
+            <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Product Name ID </th>
+                                <th> Product Category Name </th>
+                                <th> Product Name </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $db = dbConn();
+                            $sql = "SELECT * FROM tbl_product_names";
+                            $result = $db->query($sql);
+                            ?>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                $i = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['product_name_id'] ?> </td>
+                                        <?php
+                                        $db = dbConn();
+                                        $productcategoryname = $row['product_category_id'];
+                                        $sql1 = "SELECT * FROM  tbl_products_category WHERE product_category_id='$productcategoryname'";
+                                        $result1 = $db->query($sql1);
+                                        $row1 = $result1->fetch_assoc()
+                                        ?>
+                                        <td><?= $row1['product_category_name'] ?> </td>
+                                        <td><?= $row['product_name'] ?> </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            </tbody>
+                            </table>
         </div>
     </div>
 </div>
