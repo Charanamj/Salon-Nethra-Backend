@@ -20,12 +20,13 @@
                                 <th> End Time </th>
                                 <th> Add Date </th>
                                 <th> Status </th>
+                                <th> Change Status </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $db = dbConn();
-                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='2'";
+                            $sql = "SELECT * FROM tbl_appointments";
                             $result = $db->query($sql);
                             ?>
                             <?php
@@ -73,6 +74,31 @@
                                         <td><?= $row3['time_slot_start_time'] ?></td>
                                         <td><?= $row3['time_slot_end_time'] ?></td>
                                         <td><?= $row['add_date'] ?></td>
+                                        <td>
+                                        <form method="post" action="activateappointment.php">
+                                            <select type="text" class="form-control" id="exampleInputName1"
+                                                name="appointment_status" value="<?= @$appointment_status ?>">
+                                                <option value="">- -</option>
+                                                <option value="1" <?php
+                                                if (@$appointment_status == "1") {
+                                                    echo "selected";
+                                                }
+                                                ?>style="color: green;">Processing</option>
+                                                <option value="2" <?php
+                                                if (@$appointment_status == "2") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Completed</option>
+                                                <option value="3" <?php
+                                                if (@$appointment_status == "3") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled</option>
+                                            </select>                                                                
+                                            <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
+                                            <button type="submit" name="action" value="update" class="btn btn-gradient-primary me-2">Change Status</button>
+                                            </form>
+                                     </td>
                                      <td>
                                         <?php
                                         $appstatus= $row['appointment_status'];

@@ -2,13 +2,7 @@
 <?php include 'function.php'; ?>
 <?php include 'config.php'; ?>
 <?php
-//check whether userrole session created or not
 session_start();
-if (!empty($_SESSION['userrole'])) {
-    header("Location:index.php");
-} else {
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

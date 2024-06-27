@@ -304,13 +304,16 @@ if (($_SESSION ['userrole']) == 'Manager') {
             <div class="collapse" id="icons1">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/cancelledappointments.php">Cancelled Appointments</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/viewappointments.php">View Appointments</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/completeappointments.php">Completed Appointments</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/processingappointments.php">Processing Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/cancelledappointments.php">Cancelled Appointments</a>
                 </li>
               </ul>
             </div>

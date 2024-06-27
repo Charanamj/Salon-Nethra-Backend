@@ -1,5 +1,6 @@
-<?php include 'menu.php'; ?>
-
+<?php
+include 'menu.php';
+?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
