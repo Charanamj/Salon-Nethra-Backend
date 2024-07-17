@@ -58,7 +58,7 @@
                                         $result2 = $db->query($sql2);
                                         $row2 = $result2->fetch_assoc()
                                             ?>
-                                        <td><?= $row2['customer_firstname'] ?>         <?= $row2['customer_lastname'] ?></td>
+                                        <td><?= $row2['customer_firstname'] ?><?= $row2['customer_lastname'] ?></td>
                                         <td><?= $row2['customer_mobilenumber'] ?></td>
                                         <td><?= $row2['customer_email'] ?></td>
                                         <td><?= $row['booking_date'] ?></td>
