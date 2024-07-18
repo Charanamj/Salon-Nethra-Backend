@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">View Appointments</h4>
+                    <h4 class="card-title">Pending Appointments</h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -25,7 +25,7 @@
                         <tbody>
                             <?php
                             $db = dbConn();
-                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='2'";
+                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='1'";
                             $result = $db->query($sql);
                             ?>
                             <?php
@@ -74,14 +74,20 @@
                                         <td><?= $row3['time_slot_end_time'] ?></td>
                                         <td><?= $row['add_date'] ?></td>
                                      <td>
-                                        <?php
+                                     <?php
                                         $appstatus= $row['appointment_status'];
                                         if($appstatus == "1"){
-                                           echo "Processing";
+                                           echo "Pending";
                                         }else if($appstatus == "2"){
-                                            echo "Completed";
+                                            echo "Advance Payment";
                                         }else if($appstatus == "3"){
-                                            echo "Cancelled";  
+                                            echo "Processing";
+                                        }else if($appstatus == "4"){
+                                            echo "Completed Payment";
+                                        }else if($appstatus == "5"){
+                                            echo "Cancelled/Customer";
+                                        }else if($appstatus == "6"){
+                                            echo "Cancelled/Salon";  
                                             }
                                         ?>
                                     </td>

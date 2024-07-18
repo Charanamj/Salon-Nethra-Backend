@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Processing Appointments</h4>
+                    <h4 class="card-title">Appointments Cancelled by the Customer</h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -25,7 +25,7 @@
                         <tbody>
                             <?php
                             $db = dbConn();
-                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='3'";
+                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='5'";
                             $result = $db->query($sql);
                             ?>
                             <?php

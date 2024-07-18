@@ -19,15 +19,61 @@
                                 <th> Start Time </th>
                                 <th> End Time </th>
                                 <th> Add Date </th>
-                                <th> Status </th>
+                                
+                                <th> <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                                <select type="text" class="form-control" id="exampleInputName1"
+                                                name="filter_status" value="<?= @$filter_status ?>">
+                                                <option value="">- -</option>
+                                                <option value="1" <?php
+                                                if (@$filter_status == "1") {
+                                                    echo "selected";
+                                                }
+                                                ?>style="color: green;">Pending</option>
+                                                <option value="2" <?php
+                                                if (@$filter_status == "2") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Advance Payment</option>
+                                                <option value="3" <?php
+                                                if (@$filter_status == "3") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Processing</option>
+                                                <option value="4" <?php
+                                                if (@$filter_status == "4") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Completed Payment</option>
+                                                <option value="5" <?php
+                                                if (@$filter_status == "5") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Customer</option>
+                                                <option value="6" <?php
+                                                if (@$filter_status == "6") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Salon</option>
+                                                
+                                            </select>   
+                                            <button type="submit" name="action" value="filter" class="btn btn-gradient-primary me-2">Filter</button>
+                                </form> Status </th>
                                 <th> Change Status </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $db = dbConn();
-                            $sql = "SELECT * FROM tbl_appointments";
+                            extract($_POST);
+                            if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'filter'){
+                                extract($_POST);
+                                $db = dbConn();
+                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status = '$filter_status' ";
                             $result = $db->query($sql);
+                            }else{
+                                $db = dbConn();
+                                $sql = "SELECT * FROM tbl_appointments";
+                                $result = $db->query($sql);
+                            }
                             ?>
                             <?php
                             if ($result->num_rows > 0) {
@@ -83,17 +129,32 @@
                                                 if (@$appointment_status == "1") {
                                                     echo "selected";
                                                 }
-                                                ?>style="color: green;">Processing</option>
+                                                ?>style="color: green;">Pending</option>
                                                 <option value="2" <?php
                                                 if (@$appointment_status == "2") {
                                                     echo "selected";
                                                 }
-                                                ?>>Completed</option>
+                                                ?>>Advance Payment</option>
                                                 <option value="3" <?php
                                                 if (@$appointment_status == "3") {
                                                     echo "selected";
                                                 }
-                                                ?>>Cancelled</option>
+                                                ?>>Processing</option>
+                                                <option value="4" <?php
+                                                if (@$appointment_status == "4") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Completed Payment</option>
+                                                <option value="5" <?php
+                                                if (@$appointment_status == "5") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Customer</option>
+                                                <option value="6" <?php
+                                                if (@$appointment_status == "6") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Salon</option>
                                             </select>                                                                
                                             <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
                                             <button type="submit" name="action" value="update" class="btn btn-gradient-primary me-2">Change Status</button>
@@ -103,11 +164,17 @@
                                         <?php
                                         $appstatus= $row['appointment_status'];
                                         if($appstatus == "1"){
-                                           echo "Processing";
+                                           echo "Pending";
                                         }else if($appstatus == "2"){
-                                            echo "Completed";
+                                            echo "Advance Payment";
                                         }else if($appstatus == "3"){
-                                            echo "Cancelled";  
+                                            echo "Processing";
+                                        }else if($appstatus == "4"){
+                                            echo "Completed Payment";
+                                        }else if($appstatus == "5"){
+                                            echo "Cancelled/Customer";
+                                        }else if($appstatus == "6"){
+                                            echo "Cancelled/Salon";  
                                             }
                                         ?>
                                     </td>

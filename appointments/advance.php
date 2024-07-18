@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Processing Appointments</h4>
+                    <h4 class="card-title">Advance Payments Done Appointments</h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -25,7 +25,7 @@
                         <tbody>
                             <?php
                             $db = dbConn();
-                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='3'";
+                            $sql = "SELECT * FROM tbl_appointments WHERE appointment_status='2'";
                             $result = $db->query($sql);
                             ?>
                             <?php
@@ -58,7 +58,7 @@
                                         $result2 = $db->query($sql2);
                                         $row2 = $result2->fetch_assoc()
                                             ?>
-                                        <td><?= $row2['customer_firstname'] ?>         <?= $row2['customer_lastname'] ?></td>
+                                        <td><?= $row2['customer_firstname'] ?><?= $row2['customer_lastname'] ?></td>
                                         <td><?= $row2['customer_mobilenumber'] ?></td>
                                         <td><?= $row2['customer_email'] ?></td>
                                         <td><?= $row['booking_date'] ?></td>

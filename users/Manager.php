@@ -307,13 +307,22 @@ if (($_SESSION ['userrole']) == 'Manager') {
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/viewappointments.php">View Appointments</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/completeappointments.php">Completed Appointments</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/pending.php">Pending Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/advance.php">Advance Completed</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/processingappointments.php">Processing Appointments</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/cancelledappointments.php">Cancelled Appointments</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/completed.php">Completed Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/C_cancelledappointments.php">Cancelled by Customer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/S_cancelledappointments.php">Cancelled by Salon</a>
                 </li>
               </ul>
             </div>
