@@ -5,6 +5,7 @@
   background: $card-bg;
   .card-body {
     padding: $card-padding-y $card-padding-x;
+    overflow: auto;
     + .card-body {
       padding-top: 1rem;
     }

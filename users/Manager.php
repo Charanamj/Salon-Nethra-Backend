@@ -303,6 +303,9 @@ if (($_SESSION ['userrole']) == 'Manager') {
             </a>
             <div class="collapse" id="icons1">
               <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/assignappointments.php">Assign Staff</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/viewappointments.php">View Appointments</a>
                 </li>
@@ -382,26 +385,27 @@ if (($_SESSION ['userrole']) == 'Manager') {
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables1" aria-expanded="false" aria-controls="tables1">
+              <span class="menu-title">Creating Time Slots</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tables1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>timeslots/timeslot.php"> Adding Time Slot </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-title">Creating TIme Slots</span>
+              <span class="menu-title">Inquiry Handling</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>timeslots/timeslot.php"> Adding Time Slot </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/login.html"> Login </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/register.html"> Register </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/error-404.html"> 404 </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/samples/error-500.html"> 500 </a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>inquiries/inquiries.php"> View Inquiries </a>
                 </li>
               </ul>
             </div>

@@ -78,7 +78,20 @@ session_start();
 
                     $sql2 = "SELECT * FROM  designation WHERE designation_id='$new'";
 
+                        $user = $_SESSION['LogId'];
+                        $AtendDate = date('y-m-d');
+                        $AttendUserRole = $_SESSION['LoggedDesignation'];
+                        $sql3 = "SELECT * FROM  tbl_attendance WHERE logged_user_id='$user'";
+                        $result3 = $db->query($sql3);
 
+                        if ($result3->num_rows > 0) {
+                            echo "user already created";
+                        }else{
+                            $sql4 = "INSERT INTO tbl_attendance (logged_user_id, attend_user_role, attend_date) VALUES 
+                            ('$user','$AttendUserRole','$AtendDate')";
+                            $db->query($sql4);
+                        }
+                    
                     $result1 = $db->query($sql2);
                     //row1 is a array
                     $row1 = $result1->fetch_assoc();
