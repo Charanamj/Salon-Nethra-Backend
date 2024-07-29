@@ -18,6 +18,8 @@
                                 $db = dbConn();
                                 $sql = "UPDATE tbl_appointments SET barber_id='$staff_designation' WHERE appointment_no= '$appointment_id' ";
                                 $result = $db->query($sql);
+
+                                
                             }
                         }
                         ?>
