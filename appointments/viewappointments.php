@@ -90,7 +90,7 @@
                                     $sql1 = "SELECT * FROM  tbl_services_category WHERE service_category_id='$servicecategoryname'";
                                     $result1 = $db->query($sql1);
                                     $row1 = $result1->fetch_assoc()
-                                        ?>
+                                    ?>
                                     <td><?= $row1['service_category_name'] ?> </td>
                                     <?php
                                     $db = dbConn();

@@ -19,7 +19,10 @@
                                 $sql = "UPDATE tbl_appointments SET barber_id='$staff_designation' WHERE appointment_no= '$appointment_id' ";
                                 $result = $db->query($sql);
 
-                                
+                                $sqlInsert = "INSERT INTO tbl_barber_appointments (appointment_id, 
+                                barber_id, time_slot_id, customer_id, service_id, appoint_date) VALUES ('$appointment_id','$staff_designation','$timeslot',
+                                '$cid','$sid','$booking_date')";
+                                $resultInsert = $db->query($sqlInsert);
                             }
                         }
                         ?>
@@ -54,6 +57,7 @@
                             while ($row = $result->fetch_assoc()) {
                                 ?>
                                 <tr>
+                                <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                                     <td><?= $row['appointment_no'] ?> </td>
                                     <?php
                                     $db = dbConn();
@@ -63,36 +67,47 @@
                                     $row1 = $result1->fetch_assoc()
                                         ?>
                                     <td><?= $row1['service_category_name'] ?> </td>
+                                    
                                     <?php
                                     $db = dbConn();
                                     $servicename = $row['service_name'];
+                                    ?>
+                                    <?php
                                     $sql2 = "SELECT * FROM  tbl_services WHERE service_id='$servicename'";
                                     $result2 = $db->query($sql2);
                                     $row2 = $result2->fetch_assoc()
-                                        ?>
+                                    ?>
+                                    <input type="hidden" name="sid" value="<?= $row2['service_id'] ?>">
                                     <td><?= $row2['service_name'] ?> </td>
                                     <?php
                                     $db = dbConn();
                                     $customername = $row['customer_id'];
+                                    ?>
+                                    <input type="hidden" name="cid" value="<?= $customername ?>">
+                                    <?php
                                     $sql2 = "SELECT * FROM  tbl_customers WHERE customer_id='$customername'";
                                     $result2 = $db->query($sql2);
                                     $row2 = $result2->fetch_assoc()
-                                        ?>
+                                    ?>
                                     <td><?= $row2['customer_firstname'] ?>         <?= $row2['customer_lastname'] ?></td>
                                     <td><?= $row2['customer_email'] ?></td>
+                                    <input type="hidden" name="booking_date" value="<?= $row['booking_date'] ?>">
                                     <td><?= $row['booking_date'] ?></td>
+                                    
                                     <?php
                                     $db = dbConn();
                                     $timeslotname = $row['time_slot_id'];
+                                    ?>
+                                    <input type="hidden" name="timeslot" value="<?= $timeslotname ?>">
+                                    <?php
                                     $sql3 = "SELECT * FROM  tbl_time_slots WHERE time_slot_id='$timeslotname'";
                                     $result3 = $db->query($sql3);
                                     $row3 = $result3->fetch_assoc()
-                                        ?>
+                                    ?>
                                     <td><?= $row3['time_slot_name'] ?></td>
                                     <td><?= $row3['time_slot_start_time'] ?></td>
                                     <td><?= $row3['time_slot_end_time'] ?></td>
-                                    <td>
-                                        <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                                    <td>   
                                             <?php
                                             $db = dbConn();
                                             $sql4 = "SELECT * FROM  tbl_staff WHERE staff_designation='4' OR staff_designation='5' ";
@@ -113,12 +128,12 @@
                                                 ?>
                                             </select>
                                             <span class="text-danger"><?= @$messages['staff_designation'] ?></span>
-                                            <input type="text" name="appointment_id" value="<?= $row['appointment_no'] ?>">
+                                            <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
 
                                             <button type="submit" name="action" value="update"
                                                 class="btn btn-gradient-primary me-2">Appoint Barber</button>
 
-                                        </form>
+                                </form>
                                     </td>
                                 </tr>
                                 <?php
