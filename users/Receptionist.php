@@ -239,20 +239,19 @@ if (($_SESSION ['userrole']) == 'Receptionist') {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
               aria-controls="ui-basic">
-              <span class="menu-title">Salon Services</span>
+              <span class="menu-title">Appointments</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>services/addservices.php">Add Salon Services</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/assignappointments.php">Assign Barber</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/ui-features/dropdowns.html">Edit Salon Services</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/changeappointments.php">Appointment Status</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/ui-features/typography.html">Remove Salon
-                    Services</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/changeappointments.php">Checking Payments</a>
                 </li>
               </ul>
             </div>

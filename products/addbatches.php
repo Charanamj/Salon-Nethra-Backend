@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                     <tr>
                                         <td><?= $row['batch_id'] ?> </td>
                                         <td><?= $row['batch_name'] ?> </td>
-                                        <td><?= $row['batch_name'] ?> </td>
+                                        <td><?= $row['batchadd_date'] ?> </td>
                                     </tr>
                                     <?php
                                 }

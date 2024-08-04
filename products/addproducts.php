@@ -307,7 +307,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Product Expire Day</label>
-                    <input type="date" class="form-control" id="exampleInputName1" name="productexpire_date"
+                    <input type="date" class="form-control" id="exampleInputName1" name="productexpire_date" 
+                    min='<?= date("Y-m-d") ?>' max='<?php echo date("Y-m-d", strtotime("+730 days")); ?>'
                         value="<?= @$productexpire_date ?>" placeholder="Select the product expire date">
                     <span class="text-danger"><?= @$messages['productexpire_date'] ?></span>
                 </div>

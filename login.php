@@ -47,7 +47,7 @@ session_start();
 
         if (!empty($username)) {
             $db = dbConn();
-            $sql = "SELECT * FROM  tbl_staff WHERE staff_username='$username'";
+            $sql = "SELECT * FROM  tbl_staff WHERE staff_username='$username' AND staff_status='1'";
             //database eke thiyena user name ekai enter karapu username ekai eka samanada balanawa
             $result = $db->query($sql);
             //database eke value ekak thiyenawanam statement eka athule thiyena de wenawa
@@ -76,7 +76,7 @@ session_start();
                     $_SESSION['LogPasw'] = $rowpsw['staff_password'];
                     $new = $_SESSION['LogDesignation'];
 
-                    $sql2 = "SELECT * FROM  designation WHERE designation_id='$new'";
+                   $sql2 = "SELECT * FROM  designation WHERE designation_id='$new'";
 
                         $user = $_SESSION['LogId'];
                         $AtendDate = date('y-m-d');
@@ -85,7 +85,7 @@ session_start();
                         $result3 = $db->query($sql3);
 
                         if ($result3->num_rows > 0) {
-                            echo "user already created";
+                            "user already created";
                         }else{
                             $sql4 = "INSERT INTO tbl_attendance (logged_user_id, attend_user_role, attend_date) VALUES 
                             ('$user','$AttendUserRole','$AtendDate')";

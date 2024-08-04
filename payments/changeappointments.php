@@ -6,6 +6,16 @@
                 <div class="card-body">
                     <h4 class="card-title">View Appointments</h4>
                     <table class="table table-striped">
+                    <?php
+extract($_POST);
+if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'update') {
+    $db = dbConn();
+    $sql = "UPDATE tbl_appointments SET appointment_status= '$appointment_status' WHERE appointment_id='$appointment_id'";
+
+    $db->query($sql);
+    header ("Location:changeappointments.php?status=activate");
+}
+?>
                         <?php
                         extract($_POST);
                         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -27,17 +37,15 @@
                         }
                         ?>
                         <tr>
-                            <th> App No </th>
-                            <th> Cat Name </th>
+                            <th> App No </th>                   
                             <th> S Name </th>
                             <th> Cus Name </th>
-                            <th> Cus Email </th>
                             <th> Booked Date </th>
                             <th> Time Slot Name </th>
                             <th> Str Time </th>
                             <th> End Time </th>
-                            <th> Select Barber </th>
-                            <th> Change Barber </th>
+                            <th> Status </th>
+                            <th> Change Status </th>
                         </tr>
                         <?php
                         extract($_POST);
@@ -59,16 +67,7 @@
                                 ?>
                                 <tr>
                                 <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-                                    <td><?= $row['appointment_no'] ?> </td>
-                                    <?php
-                                    $db = dbConn();
-                                    $servicecategoryname = $row['service_category'];
-                                    $sql1 = "SELECT * FROM  tbl_services_category WHERE service_category_id='$servicecategoryname'";
-                                    $result1 = $db->query($sql1);
-                                    $row1 = $result1->fetch_assoc()
-                                        ?>
-                                    <td><?= $row1['service_category_name'] ?> </td>
-                                    
+                                    <td><?= $row['appointment_no'] ?> </td>  
                                     <?php
                                     $db = dbConn();
                                     $servicename = $row['service_name'];
@@ -91,7 +90,6 @@
                                     $row2 = $result2->fetch_assoc()
                                     ?>
                                     <td><?= $row2['customer_firstname'] ?>         <?= $row2['customer_lastname'] ?></td>
-                                    <td><?= $row2['customer_email'] ?></td>
                                     <input type="hidden" name="booking_date" value="<?= $row['booking_date'] ?>">
                                     <td><?= $row['booking_date'] ?></td>
                                     
@@ -110,72 +108,50 @@
                                     <td><?= $row3['time_slot_end_time'] ?></td>
                                     <td>
                                         <?php
-                                        @$barber = $row['barber_id'];
-                                        if( @$barber != 0){
-                                            $db = dbConn();
-                                            $sql5 = "SELECT * FROM  tbl_staff WHERE staff_id='$barber'";
-                                            $result5 = $db->query($sql5);
-                                            $row5 = $result5->fetch_assoc();
-                                            echo $row5['staff_firstname'];
-                                        }else{
-                                            $db = dbConn();
-                                            $sql4 = "SELECT * FROM  tbl_staff WHERE staff_designation='4' OR staff_designation='5' ";
-                                            $result4 = $db->query($sql4);
-                                            ?>
-                                            <select type="text" class="form-control" id="exampleInputName1"
-                                                name="staff_designation" value="<?= @$staff_designation ?>">
-                                                <option value="">- -</option>
-                                                <?php
-                                                while ($row4 = $result4->fetch_assoc()) {
-                                                    ?>
-                                                    <option value="<?= $row4['staff_id'] ?>"
-                                                        <?= @$staff_designation == $row4['staff_id'] ? 'selected' : '' ?>>
-                                                        <?= $row4['staff_firstname'] ?>
-                                                    </option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                            <span class="text-danger"><?= @$messages['staff_designation'] ?></span>
-                                            <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
-
-                                            <button type="submit" name="action" value="update"
-                                                class="btn btn-gradient-primary me-2">Appoint Barber</button>
-                                                <?php
-                                        }  
-                                        ?>                                       
-                                
+                                        $appstatus = $row['appointment_status'];
+                                        if ($appstatus == "1") {
+                                            echo "Pending";
+                                        } else if ($appstatus == "2") {
+                                            echo "Advance Payment";
+                                        } else if ($appstatus == "3") {
+                                            echo "Processing";
+                                        } else if ($appstatus == "4") {
+                                            echo "Completed Payment";
+                                        } else if ($appstatus == "5") {
+                                            echo "Cancelled/Customer";
+                                        } else if ($appstatus == "6") {
+                                            echo "Cancelled/Salon";
+                                        }
+                                        ?>
                                     </td>
                                     <td>
-                                    <?php
-                                        @$barber = $row['barber_id'];
-                                        if( @$barber != 0){
-                                            $db = dbConn();
-                                            $sql4 = "SELECT * FROM  tbl_staff WHERE staff_designation='4' OR staff_designation='5' ";
-                                            $result4 = $db->query($sql4);
-                                            ?>
                                             <select type="text" class="form-control" id="exampleInputName1"
-                                                name="staff_designation" value="<?= @$staff_designation ?>">
+                                                name="appointment_status" value="<?= @$appointment_status ?>">
                                                 <option value="">- -</option>
-                                                <?php
-                                                while ($row4 = $result4->fetch_assoc()) {
-                                                    ?>
-                                                    <option value="<?= $row4['staff_id'] ?>"
-                                                        <?= @$staff_designation == $row4['staff_id'] ? 'selected' : '' ?>>
-                                                        <?= $row4['staff_firstname'] ?>
-                                                    </option>
-                                                    <?php
+                                                <option value="3" <?php
+                                                if (@$appointment_status == "3") {
+                                                    echo "selected";
                                                 }
-                                                ?>
+                                                ?>>Processing</option>
+                                                <option value="4" <?php
+                                                if (@$appointment_status == "4") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Completed Payment</option>
+                                                <option value="5" <?php
+                                                if (@$appointment_status == "5") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Customer</option>
+                                                <option value="6" <?php
+                                                if (@$appointment_status == "6") {
+                                                    echo "selected";
+                                                }
+                                                ?>>Cancelled/Salon</option>
                                             </select>
-                                            <span class="text-danger"><?= @$messages['staff_designation'] ?></span>
                                             <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
-
                                             <button type="submit" name="action" value="update"
-                                                class="btn btn-gradient-primary me-2">Change Barber</button>
-                                                <?php
-                                        }  
-                                        ?>
+                                                class="btn btn-gradient-primary me-2">Change Status</button>
                                     </td>
                                 </form>
                                 </tr>

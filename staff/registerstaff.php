@@ -169,9 +169,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $staff_verification = rand(100000, 999999);
       $_SESSION['SNO'] = $staff_verification;
       $newpsw = sha1($staff_password);
-      $sql = "INSERT INTO tbl_staff (staff_title, staff_gender, staff_designation, staff_firstname, 
+      $sql = "INSERT INTO tbl_staff (staff_status,staff_title, staff_gender, staff_designation, staff_firstname, 
       staff_lastname, staff_idnum, staff_addressline1, staff_addressline2, staff_email, staff_telno, staff_description,
-       staff_image, staff_username, staff_password, staff_verification) VALUES ('$staff_title','$staff_gender','$staff_designation',
+       staff_image, staff_username, staff_password, staff_verification) VALUES ('$status','$staff_title','$staff_gender','$staff_designation',
        '$staff_firstname','$staff_lastname','$staff_idnum','$staff_addressline1','$staff_addressline2','$staff_email',
        '$staff_telno','$staff_description','$file_name_new','$staff_username','$newpsw','$staff_verification')";
 

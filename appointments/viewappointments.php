@@ -20,7 +20,6 @@
                             <th> Start Time </th>
                             <th> End Time </th>
                             <th> Add Date </th>
-
                             <th>
                                 <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                                     <select type="text" class="form-control" id="exampleInputName1" name="filter_status"
