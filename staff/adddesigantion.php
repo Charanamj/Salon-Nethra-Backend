@@ -16,7 +16,7 @@ if (empty($designation)) {
 if (empty($messages)) {
     $db = dbConn();
     // $AddUser = $_SESSION['UserId'];
-    $AddDate = date('y-m-d');
+    $AddDate = date('Y-m-d');
     $status = 1;
     $sql = "INSERT INTO `designation`(designation_name) VALUES ('$designation')";
 

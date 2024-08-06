@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">View Appointments</h4>
+                    <h4 class="card-title">Assign Staff Member to Appointment</h4>
                     <table class="table table-striped">
                         <?php
                         extract($_POST);

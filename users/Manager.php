@@ -297,10 +297,17 @@ if (($_SESSION ['userrole']) == 'Manager') {
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= SYSTEM_PATH ?> docs/documentation.html" target="_blank">
-              <span class="menu-title">Documentation</span>
-              <i class="mdi mdi-file-document-box menu-icon"></i>
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth1" aria-expanded="false" aria-controls="auth">
+              <span class="menu-title">Reports</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="auth1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>inquiries/inquiries.php"> Stock Reports </a>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>

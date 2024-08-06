@@ -11,7 +11,6 @@
                             <tr>
                                 <th> Service Category ID </th>
                                 <th> Service Name </th>
-                                <th> Service Description </th>
                                 <th> Service Price </th>
                                 <th> Staff Pay </th>
                                 <th> Utility Pay </th>
@@ -34,7 +33,6 @@
                                     <tr>
                                         <td><?= $row['service_category_id'] ?> </td>
                                         <td><?= $row['service_name'] ?> </td>
-                                        <td><?= $row['service_description'] ?> </td>
                                         <td><?= $row['service_price'] ?> </td>
                                         <td><?= $row['service_staff_fee'] ?> </td>
                                         <td><?= $row['staff_utility_fee'] ?> </td>

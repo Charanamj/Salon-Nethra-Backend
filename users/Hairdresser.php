@@ -135,36 +135,20 @@ if (($_SESSION ['userrole']) == 'Hairdresser') {
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false"
               aria-controls="icons">
-              <span class="menu-title">Register with the System</span>
+              <span class="menu-title">Request Salon Products</span>
               <i class="menu-arrow"></i>              
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>staff/registerstaff.php">Salon Staff Registration</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>staff/registerstaff.php">Request a Product</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>staff/adddesigantion.php">Adding Staff Designation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>pages/ui-features/typography.html">Remove Salon Staff</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>staff/adddesigantion.php">Request Equipments</a>
                 </li>
               </ul>
             </div>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <span class="menu-title">Icons</span>
-              <i class="mdi mdi-contacts menu-icon"></i>
-            </a>
-            <div class="collapse" id="icons">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?> pages/icons/font-awesome.html">Font Awesome</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
         </ul>
       </nav>
 </body>

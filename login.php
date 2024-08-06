@@ -11,14 +11,15 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
+    <link href="<?= SYSTEM_PATH ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<?= SYSTEM_PATHS ?>assets/js/sweetalert2.all.js"></script>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: rgb(200, 200, 200);
         }
 
         .login-container {
+            font-family: "Trirong", serif;
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
@@ -79,7 +80,7 @@ session_start();
                    $sql2 = "SELECT * FROM  designation WHERE designation_id='$new'";
 
                         $user = $_SESSION['LogId'];
-                        $AtendDate = date('y-m-d');
+                        $AtendDate = date('Y-m-d');
                         $AttendUserRole = $_SESSION['LoggedDesignation'];
                         $sql3 = "SELECT * FROM  tbl_attendance WHERE logged_user_id='$user'";
                         $result3 = $db->query($sql3);

@@ -25,7 +25,7 @@ if (empty($profitpay)) {
 if (empty($messages)) {
     $db = dbConn();
     // $AddUser = $_SESSION['UserId'];
-    $AddDate = date('y-m-d');
+    $AddDate = date('Y-m-d');
     $status = 1;
     $sql = "INSERT INTO tbl_prices (staff_pay,utility_pay,profit_pay) VALUES ('$staffpay','$utilitypay','$profitpay')";
 

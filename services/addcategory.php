@@ -17,7 +17,7 @@ if (empty($service_category_name)) {
 if (empty($messages)) {
     $db = dbConn();
     // $AddUser = $_SESSION['UserId'];
-    $AddDate = date('y-m-d');
+    $AddDate = date('Y-m-d');
     $status = 1;
     $sql = "INSERT INTO `tbl_services_category` (service_category_name) VALUES ('$service_category_name')";
 

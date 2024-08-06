@@ -10,13 +10,10 @@
                             <tr>
                                 <th> Product Category Name </th>
                                 <th> Product Name </th>
-                                <th> Product Description </th>
                                 <th> Product Iamge </th>
                                 <th> Product Price </th>
                                 <th> Product Quantity </th>
                                 <th> Add User Name </th>
-                                <th> Add Date </th>
-                                <th> Expire Date </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,7 +44,6 @@
                                         $row2 = $result2->fetch_assoc()
                                         ?>
                                         <td><?= $row2['product_name'] ?> </td>
-                                        <td><?= $row['product_description'] ?> </td>
                                         <td class="py-1">
                                             <img src="../assets/images/products/<?= $row['product_image'] ?>" alt="image" />
                                         </td>
@@ -61,8 +57,6 @@
                                         $row4 = $result4->fetch_assoc()
                                         ?>
                                         <td><?= $row4['staff_firstname'] . ' ' . $row4['staff_lastname'] ?> </td>
-                                        <td><?= $row['productadd_date'] ?> </td>
-                                        <td><?= $row['productexpire_date'] ?> </td>
                                     </tr>
                                     <?php
 

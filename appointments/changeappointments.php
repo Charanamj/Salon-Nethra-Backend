@@ -4,7 +4,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">View Appointments</h4>
+                    <h4 class="card-title">Change the Appointment Status</h4>
                     <table class="table table-striped">
                     <?php
 extract($_POST);
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'update') {
                             <th> Time Slot Name </th>
                             <th> Str Time </th>
                             <th> End Time </th>
+                            <th> Remain Payment </th>
                             <th> Status </th>
                             <th> Change Status </th>
                         </tr>
@@ -107,6 +108,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'update') {
                                     <td><?= $row3['time_slot_start_time'] ?></td>
                                     <td><?= $row3['time_slot_end_time'] ?></td>
                                     <td>
+                                    <?php
+                                    $appstatus = $row['appointment_status'];
+                                        if(($appstatus == "4")){
+                                            echo "N/A";
+                                        }else{
+                                            echo "Rs." . $row['app_remain_pay'];
+                                        }
+                                        ?>
+                                    </td>
+
+                                    <td>
                                         <?php
                                         $appstatus = $row['appointment_status'];
                                         if ($appstatus == "1") {
@@ -125,6 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'update') {
                                         ?>
                                     </td>
                                     <td>
+                                        <?php
+                                        if(($appstatus == "4")){
+                                            echo "Completed Payment";
+                                        }else{  
+                                            ?>
                                             <select type="text" class="form-control" id="exampleInputName1"
                                                 name="appointment_status" value="<?= @$appointment_status ?>">
                                                 <option value="">- -</option>
@@ -152,7 +169,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && @$action == 'update') {
                                             <input type="hidden" name="appointment_id" value="<?= $row['appointment_id'] ?>">
                                             <button type="submit" name="action" value="update"
                                                 class="btn btn-gradient-primary me-2">Change Status</button>
+                                                <?php }
+                                                ?>
                                     </td>
+                            
                                 </form>
                                 </tr>
                                 <?php

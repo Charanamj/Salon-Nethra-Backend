@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $db = dbConn();
         $AddUser = $_SESSION['LogId'];
         $lower= strtolower($batch_name);
-        $AddDate = date('y-m-d');
+        $AddDate = date('Y-m-d');
         $status = 1;
         $sql = "INSERT INTO tbl_batches (batch_name,batchadd_date,batchadd_user) VALUES ('$lower','$AddDate','$AddUser')";
 

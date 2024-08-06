@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $db = dbConn();
         $AddUser = $_SESSION['LogId'];
         $lower = strtolower($product_name);
-        $AddDate = date('y-m-d');
+        $AddDate = date('Y-m-d');
         $status = 1;
         //create a new variable name for product quantity and assigned it 1.
         $productquantity = 1;
@@ -236,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         while ($row = $result2->fetch_assoc()) {
                             ?>
                             <option value="<?= $row['product_category_id'] ?>"
-                                <?= @$tbl_products_category == $row['product_category_id'] ? 'selected' : '' ?>>
+                                <?= @$product_category == $row['product_category_id'] ? 'selected' : '' ?>>
                                 <?= $row['product_category_name'] ?>
                             </option>
                             <?php
@@ -257,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <?php
                         while ($row = $result3->fetch_assoc()) {
                             ?>
-                            <option value="<?= $row['batch_id'] ?>" <?= @$tbl_batches == $row['batch_id'] ? 'selected' : '' ?>>
+                            <option value="<?= $row['batch_id'] ?>" <?= @$batch_name == $row['batch_id'] ? 'selected' : '' ?>>
                                 <?= $row['batch_name'] ?>
                             </option>
                             <?php
@@ -278,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <?php
                         while ($row = $result4->fetch_assoc()) {
                             ?>
-                            <option value="<?= $row['product_name_id'] ?>" <?= @$tbl_product_names == $row['product_name_id'] ? 'selected' : '' ?>>
+                            <option value="<?= $row['product_name_id'] ?>" <?= @$product_name == $row['product_name_id'] ? 'selected' : '' ?>>
                                 <?= $row['product_name'] ?>
                             </option>
                             <?php

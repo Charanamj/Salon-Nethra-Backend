@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($messages)) {
         $db = dbConn();
         $AddUser = $_SESSION['LogId'];
-        $AddDate = date('y-m-d');
+        $AddDate = date('Y-m-d');
         $status = 1;
         $sql = "SELECT * FROM tbl_prices";
         $result = $db->query($sql);

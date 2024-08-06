@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (empty($messages)) {
       $db = dbConn();
-      $AddDate = date('y-m-d');
+      $AddDate = date('Y-m-d');
       $status = 1;
       $staff_verification = rand(100000, 999999);
       $_SESSION['SNO'] = $staff_verification;
@@ -259,17 +259,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             value="<?= @$staff_title ?>">
             <option value="">- -</option>
             <option value="Mr" <?php
-            if (@$Title == "Mr") {
+            if (@$staff_title == "Mr") {
               echo "selected";
             }
             ?>>Mr.</option>
             <option value="Mrs" <?php
-            if (@$Title == "Mrs") {
+            if (@$staff_title == "Mrs") {
               echo "selected";
             }
             ?>>Mrs.</option>
             <option value="Miss" <?php
-            if (@$Title == "Miss") {
+            if (@$staff_title == "Miss") {
               echo "selected";
             }
             ?>>Miss.</option>
@@ -282,12 +282,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             value="<?= @$staff_gender ?>">
             <option value="">- -</option>
             <option value="Male" <?php
-            if (@$Title == "Male") {
+            if (@$staff_gender == "Male") {
               echo "selected";
             }
             ?>>Male</option>
             <option value="Female" <?php
-            if (@$Title == "Female") {
+            if (@$staff_gender == "Female") {
               echo "selected";
             }
             ?>>Female</option>
@@ -307,7 +307,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?php
             while ($row = $result->fetch_assoc()) {
               ?>
-              <option value="<?= $row['designation_id'] ?>" <?= @$designation == $row['designation_id'] ? 'selected' : '' ?>>
+              <option value="<?= $row['designation_id'] ?>" <?= @$staff_designation == $row['designation_id'] ? 'selected' : '' ?>>
                 <?= $row['designation_id'] . " " . $row['designation_name'] ?>
               </option>
               <?php

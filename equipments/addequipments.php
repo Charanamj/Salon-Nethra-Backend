@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $db = dbConn();
         $AddUser = $_SESSION['LogId'];
         $lower = strtolower($equipment_name);
-        $AddDate = date('y-m-d');
+        $AddDate = date('Y-m-d');
         $status = 1;
         //create a new variable name for product quantity and assigned it 1.
         $equipmentquantity = 1;

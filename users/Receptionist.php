@@ -78,7 +78,7 @@ if (($_SESSION ['userrole']) == 'Receptionist') {
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item" href="#">
-                <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                <i class="mdi mdi-cached me-2 text-success"></i> Profile </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?= SYSTEM_PATH ?>logout.php">
                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
@@ -251,7 +251,13 @@ if (($_SESSION ['userrole']) == 'Receptionist') {
                   <a class="nav-link" href="<?= SYSTEM_PATH ?>appointments/changeappointments.php">Appointment Status</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/changeappointments.php">Checking Payments</a>
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/changeappointments.php">Onsite Payments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/verifypayment.php">Payment Verification</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= SYSTEM_PATH ?>payments/onsitepayment.php">Bank Tranfer Payments</a>
                 </li>
               </ul>
             </div>
